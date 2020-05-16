@@ -14,3 +14,4 @@ class Frame:
 
         self.key_points, self.descriptors = self.SIFT_filter.detectAndCompute(self.frame, None)
 
+
