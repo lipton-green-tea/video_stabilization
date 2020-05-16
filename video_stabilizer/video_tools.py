@@ -1,3 +1,4 @@
+import os
 import cv2
 import numpy as np
 
@@ -41,3 +42,15 @@ def create_padded_frames(frames):
         padded_frames.append(padded_frame)
 
     return padded_frames
+
+
+def output_video_from_frames(frames, path, video_name):
+    path_out = os.path.join(path, video_name + '.' + '.mp4')
+    default_fps = 24
+    size = (frames[0].shape[1], frames[0].shape[0])
+
+    out = cv2.VideoWriter(path_out, cv2.VideoWriter_fourcc(*'MP4V'), default_fps, size)
+
+    for frame in frames:
+        out.write(frame)
+    out.release()
