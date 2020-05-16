@@ -18,12 +18,12 @@ class TranslationalStabilizer:
         return frame_objects
 
     def set_image_offsets(self):
-        bfMatcher = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+        bfMatcher = cv2.BFMatcher(cv2.NORM_L1, crossCheck=True)
         for f1 in range(0, len(self.frames) - 1):
             f2 = f1 + 1
             f1_descriptors = self.frames[f1].descriptors
             f2_descriptors = self.frames[f2].descriptors
-            matches = bfMatcher.match(f1, f2)
+            matches = bfMatcher.match(f1_descriptors, f2_descriptors)
             # some kind of match filtering
             sorted_matches = sorted(matches, key=lambda x: x.distance)
             offsets = []
