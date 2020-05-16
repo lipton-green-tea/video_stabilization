@@ -13,5 +13,3 @@ class Frame:
         self.SIFT_filter = cv2.xfeatures2d.SIFT_create()
 
         self.key_points, self.descriptors = self.SIFT_filter.detectAndCompute(self.frame, None)
-
-

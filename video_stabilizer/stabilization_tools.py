@@ -30,7 +30,7 @@ class TranslationalStabilizer:
             for match in sorted_matches[:0.5*len(sorted_matches)]:
                 kp1 = self.frames[f1].key_points[match.queryIdx]
                 kp2 = self.frames[f2].key_points[match.trainIdx]
-                offsets.append((kp2.pt[0] - kp1.pt[0], kp2.pt[1] - kp1.pt[1]))
+                offsets.append((kp1.pt[0] - kp2.pt[0], kp1.pt[1] - kp2.pt[1]))
             x_offsets = [x[0] for x in offsets]
             y_offsets = [x[1] for x in offsets]
 
